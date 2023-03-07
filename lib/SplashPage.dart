@@ -1,9 +1,13 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Splshh(),
-    debugShowCheckedModeBanner: false,
+  runApp(DevicePreview(
+    builder: (BuildContext context) => MaterialApp(
+      useInheritedMediaQuery: true,
+      home: Splshh(),
+      debugShowCheckedModeBanner: false,
+    ),
   ));
 }
 
@@ -14,12 +18,20 @@ class Splshh extends StatelessWidget {
       body: Container(
         /// gradient colors for whole body
         decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Colors.black,
-          Colors.green,
-          Colors.greenAccent,
-          Colors.black
-        ], begin: Alignment.centerLeft, end: Alignment.topRight)),
+            gradient: LinearGradient(
+          colors: [
+            Colors.black,
+            Colors.green,
+            Colors.greenAccent,
+            Colors.black
+          ],
+          stops: [
+            0.0,
+            0.1,
+            0.6,
+            1
+          ], //begin: Alignment.bottomCenter, //end: Alignment.topCenter
+        )),
 
         /// single color for whole body
         //color: Colors.black ,
@@ -48,10 +60,19 @@ class Splshh extends StatelessWidget {
               //     "https://icons.iconarchive.com/icons/designbolts/emoji/256/Emoji-Cute-icon.png"),
               const Text(
                 "My Application Feb",
-                style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.yellow,
-                    fontWeight: FontWeight.bold),
+                style:
+                    ///font using dependency
+                    // GoogleFonts.vampiroOne(
+                    //     fontSize: 40,
+                    //     color: Colors.yellowAccent,
+                    //     fontWeight: FontWeight.bold,
+                    //     textStyle: Theme.of(context).textTheme.labelMedium)
+                    ///font using fonts folder
+                    TextStyle(
+                        fontSize: 30,
+                        color: Colors.yellow,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Genos'),
               )
             ],
           ),

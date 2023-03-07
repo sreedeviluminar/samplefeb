@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_fonts: ^4.0.3
   device_preview: ^1.1.0
 
 
@@ -76,11 +77,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Genos
+      fonts:
+        - asset: fonts/Genos-Italic-VariableFont_wght.ttf
+        - asset: fonts/Genos-VariableFont_wght.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
