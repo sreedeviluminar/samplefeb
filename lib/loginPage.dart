@@ -35,15 +35,28 @@ class LoginPage extends StatelessWidget {
                  padding: const EdgeInsets.all(8.0),
                  child: TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                    prefixIcon: const Icon(Icons.account_box_sharp),
+                    hintText: 'UserName',
+                    labelText: 'UserName',
+                    helperText: "Username must be an email",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(100)),
                   ),
               ),
                ),
                Padding(
                  padding: const EdgeInsets.all(8.0),
                  child: TextField(
+                   obscureText: true,
+                   obscuringCharacter: '*',
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                    helperText: "Password length should be greater than 6",
+                    prefixIcon: const Icon(Icons.password),
+                    suffixIcon: const Icon(Icons.visibility_off),
+                    hintText: 'Password',
+                    labelText: 'Password',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(100)),
                   ),
               ),
                ),
@@ -51,11 +64,13 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10,bottom: 10),
                 child: ElevatedButton(
                     onPressed: () {},
-                    child: const Text('Login',style: TextStyle(fontSize: 15))),
+                    child: const Text('Login',
+                        style: TextStyle(fontSize: 15))),
               ),
               TextButton(
                   onPressed: () {},
-                  child: const Text("Not a User?? SignUp Here!!", style: TextStyle(fontSize: 15),)),
+                  child: const Text("Not a User?? SignUp Here!!",
+                    style: TextStyle(fontSize: 15),)),
             ],
           ),
         ));
