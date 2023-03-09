@@ -1,6 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
+
 void main() {
   runApp(DevicePreview(
     builder: (BuildContext context) => MaterialApp(
@@ -20,6 +23,9 @@ class LoginValidation extends StatefulWidget {
 }
 
 class _LoginValidationState extends State<LoginValidation> {
+
+  GlobalKey<FormState> formkey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +34,7 @@ class _LoginValidationState extends State<LoginValidation> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: formkey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,6 +54,14 @@ class _LoginValidationState extends State<LoginValidation> {
                       prefixIcon: Icon(Icons.account_box_sharp),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
+
+                  validator: (uname){
+                    if(uname!.isEmpty || !uname.contains('@') || !uname.contains('.')){
+                      return 'Enter a valid UserName';
+                    }else{
+                      return null;
+                    }
+                  },
                 ),
               ),
               Padding(
@@ -57,12 +72,25 @@ class _LoginValidationState extends State<LoginValidation> {
                       prefixIcon: Icon(Icons.password),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
+
+                  validator: (password){
+                    if(password!.isEmpty || password.length < 6){
+                       return "enter a valid password";
+                    }else{
+                      return null;
+                    }
+                  },
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      final valid  = formkey.currentState!.validate();
+                      if(valid){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                      }
+                    },
                     child: const Text('Login', style: TextStyle(fontSize: 15))),
               ),
               TextButton(
