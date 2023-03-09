@@ -39,6 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: TextFormField(
                   decoration: InputDecoration(
                       hintText: "UserName",
+                      labelText: 'UserName',
                       prefixIcon: Icon(Icons.account_box_sharp),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
@@ -60,6 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   obscureText: showpass,
                   decoration: InputDecoration(
                       hintText: "PassWord",
+                      labelText: 'Password',
                       prefixIcon: Icon(Icons.password),
                       suffixIcon: IconButton(
                         onPressed: () {
