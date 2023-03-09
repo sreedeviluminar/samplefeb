@@ -1,40 +1,24 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:samplefeb/register.dart';
+import 'package:samplefeb/login%20With%20validation.dart';
 
-import 'home.dart';
-
-void main() {
-  runApp(DevicePreview(
-    builder: (BuildContext context) => MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.purple),
-      useInheritedMediaQuery: true,
-      home: LoginValidation(),
-      debugShowCheckedModeBanner: false,
-    ),
-  ));
-}
-
-class LoginValidation extends StatefulWidget {
-  const LoginValidation({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginValidation> createState() => _LoginValidationState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginValidationState extends State<LoginValidation> {
-  GlobalKey<FormState> formkey = GlobalKey();
-
+class _RegisterPageState extends State<RegisterPage> {
   /// for fetching the current state of form
-  bool showpass = true;
-
+  GlobalKey<FormState> formkey = GlobalKey();
   /// for checking the password is visible or not
+  bool showpass = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login Validation"),
+        title: const Text("Registration Page"),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -91,7 +75,6 @@ class _LoginValidationState extends State<LoginValidation> {
                             ? Icons.visibility_off
                             : Icons.visibility),
                       ),
-
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
                   validator: (password) {
@@ -104,6 +87,14 @@ class _LoginValidationState extends State<LoginValidation> {
                 ),
               ),
               Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(100))),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
                     onPressed: () {
@@ -112,19 +103,12 @@ class _LoginValidationState extends State<LoginValidation> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                                builder: (context) => LoginValidation()));
                       }
                     },
-                    child: const Text('Login', style: TextStyle(fontSize: 15))),
+                    child:
+                        const Text('Register', style: TextStyle(fontSize: 15))),
               ),
-              TextButton(
-                  onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
-                  },
-                  child: const Text(
-                    "Not a User?? SignUp Here!!",
-                    style: TextStyle(fontSize: 15),
-                  )),
             ],
           ),
         ),
