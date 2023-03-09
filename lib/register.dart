@@ -86,14 +86,21 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                 ),
               ),
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  obscureText: true,
+                  obscuringCharacter: '*',
                   decoration: InputDecoration(
+                     hintText: "Confirm Password",
+                      labelText: 'Confirm Password',
+                      prefixIcon: Icon(Icons.password),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
                 ),
               ),
+
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
