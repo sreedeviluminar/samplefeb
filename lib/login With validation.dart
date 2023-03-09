@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'home.dart';
 
-
 void main() {
   runApp(DevicePreview(
     builder: (BuildContext context) => MaterialApp(
@@ -23,8 +22,12 @@ class LoginValidation extends StatefulWidget {
 }
 
 class _LoginValidationState extends State<LoginValidation> {
-
   GlobalKey<FormState> formkey = GlobalKey();
+
+  /// for fetching the current state of form
+  bool showpass = true;
+
+  /// for checking the password is visible or not
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +57,12 @@ class _LoginValidationState extends State<LoginValidation> {
                       prefixIcon: Icon(Icons.account_box_sharp),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
-
-                  validator: (uname){
-                    if(uname!.isEmpty || !uname.contains('@') || !uname.contains('.')){
+                  validator: (uname) {
+                    if (uname!.isEmpty ||
+                        !uname.contains('@') ||
+                        !uname.contains('.')) {
                       return 'Enter a valid UserName';
-                    }else{
+                    } else {
                       return null;
                     }
                   },
@@ -67,16 +71,32 @@ class _LoginValidationState extends State<LoginValidation> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  obscuringCharacter: '*',
+                  obscureText: showpass,
                   decoration: InputDecoration(
                       hintText: "PassWord",
                       prefixIcon: Icon(Icons.password),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            if (showpass) {
+                              showpass = false;
+                            } else {
+                              showpass = true;
+                            }
+                          });
+                        },
+                        icon: Icon(showpass == true
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                      ),
+
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
-
-                  validator: (password){
-                    if(password!.isEmpty || password.length < 6){
-                       return "enter a valid password";
-                    }else{
+                  validator: (password) {
+                    if (password!.isEmpty || password.length < 6) {
+                      return "enter a valid password";
+                    } else {
                       return null;
                     }
                   },
@@ -86,9 +106,12 @@ class _LoginValidationState extends State<LoginValidation> {
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: ElevatedButton(
                     onPressed: () {
-                      final valid  = formkey.currentState!.validate();
-                      if(valid){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                      final valid = formkey.currentState!.validate();
+                      if (valid) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
                       }
                     },
                     child: const Text('Login', style: TextStyle(fontSize: 15))),
