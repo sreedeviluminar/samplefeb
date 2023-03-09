@@ -13,6 +13,7 @@ class _RegisterPageState extends State<RegisterPage> {
   GlobalKey<FormState> formkey = GlobalKey();
   /// for checking the password is visible or not
   bool showpass = true;
+  var confirmpass;
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100))),
                   validator: (password) {
+                    confirmpass = password;
                     if (password!.isEmpty || password.length < 6) {
                       return "enter a valid password";
                     } else {
@@ -92,6 +94,13 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  validator: (cpass){
+                    if(cpass != confirmpass || cpass!.isEmpty){
+                      return 'Password mismatch';
+                    }else{
+                      return null;
+                    }
+                  },
                   obscureText: true,
                   obscuringCharacter: '*',
                   decoration: InputDecoration(
