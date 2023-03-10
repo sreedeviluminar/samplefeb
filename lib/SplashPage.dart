@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:samplefeb/home.dart';
+import 'package:samplefeb/login%20With%20validation.dart';
+import 'package:samplefeb/loginPage.dart';
 
 void main() {
   runApp(DevicePreview(
@@ -11,7 +16,21 @@ void main() {
   ));
 }
 
-class Splshh extends StatelessWidget {
+class Splshh extends StatefulWidget {
+  @override
+  State<Splshh> createState() => _SplshhState();
+}
+
+class _SplshhState extends State<Splshh> {
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3),(){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

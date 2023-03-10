@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:samplefeb/register.dart';
 
 import 'home.dart';
-
-void main() {
-  runApp(DevicePreview(
-    builder: (BuildContext context) => MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.purple),
-      useInheritedMediaQuery: true,
-      home: LoginValidation(),
-      debugShowCheckedModeBanner: false,
-    ),
-  ));
-}
+//
+// void main() {
+//   runApp(DevicePreview(
+//     builder: (BuildContext context) => MaterialApp(
+//       theme: ThemeData(primarySwatch: Colors.purple),
+//       useInheritedMediaQuery: true,
+//       home: LoginValidation(),
+//       debugShowCheckedModeBanner: false,
+//     ),
+//   ));
+// }
 
 class LoginValidation extends StatefulWidget {
   const LoginValidation({Key? key}) : super(key: key);
