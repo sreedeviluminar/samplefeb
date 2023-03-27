@@ -29,33 +29,36 @@ class _BottomBar1State extends State<BottomBar1> {
       appBar: AppBar(
         title: Text("Bottom Bar"),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: index,
-        type: BottomNavigationBarType.shifting,
-        onTap: (tapindex) {
-          setState(() {
-            index = tapindex;
-          });
-        },
-        selectedItemColor: Colors.redAccent,
-        unselectedItemColor: Colors.yellowAccent,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+        child: BottomNavigationBar(
+          currentIndex: index,
+          type: BottomNavigationBarType.shifting,
+          onTap: (tapindex) {
+            setState(() {
+              index = tapindex;
+            });
+          },
+          selectedItemColor: Colors.redAccent,
+          unselectedItemColor: Colors.yellowAccent,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: "Home",
+              backgroundColor: Colors.red,
             ),
-            label: "Home",
-            backgroundColor: Colors.red,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Favorite",
-            backgroundColor: Colors.green,
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.people), label: "People"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(icon: Icon(Icons.login), label: "Login"),
-        ],
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: "Favorite",
+              backgroundColor: Colors.green,
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.people), label: "People"),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+            BottomNavigationBarItem(icon: Icon(Icons.login), label: "Login"),
+          ],
+        ),
       ),
       body: Center(
         child: screens[index],
