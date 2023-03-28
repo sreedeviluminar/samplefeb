@@ -7,6 +7,20 @@ void main() {
 }
 
 class Grid4 extends StatelessWidget {
+
+  var images = [
+    "assets/icons/logingirl.png",
+    "assets/icons/logingirl.png",
+    "assets/icons/orange.png",
+    "assets/icons/apple.png",
+    "assets/icons/orange.png",
+    "assets/icons/bananas.png",
+    "assets/icons/grapes.png",
+    "assets/icons/mango.png",
+    "assets/icons/apple.png",
+    "assets/icons/logingirl.png",
+
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,19 +28,25 @@ class Grid4 extends StatelessWidget {
           title: const Text("Grid 4"),
         ),
         body: GridView.custom(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2),
-            childrenDelegate: SliverChildListDelegate(
-                [
-                ],
-            ))
-      //SliverChildBuilderDelegate(
-      //     (ctx,index){
-      //       return Card(
-      //         child: Text("jhgxfz"),
-      //       );
-      //     }
-      // ))
-    );
+            childrenDelegate: SliverChildBuilderDelegate((ctx, index) {
+              return  Card(
+                child: Image(
+                  image: AssetImage(images[index]),
+                ),
+              );
+            }, childCount: 10))
+
+        //SliverChildListDelegate(
+        //     [
+        //       const Card(child: Center(child: Icon(Icons.ac_unit,size: 30,),),),
+        //       const Card(child: Center(child: Icon(Icons.ac_unit,size: 30,),),),
+        //       const Card(child: Center(child: Icon(Icons.ac_unit,size: 30,),),),
+        //       const Card(child: Center(child: Icon(Icons.ac_unit,size: 30,),),),
+        //       const Card(child: Center(child: Icon(Icons.ac_unit,size: 30,),),),
+        //     ])
+        // )
+        );
   }
 }
