@@ -202,10 +202,10 @@ These buttons control the card above!""",
                         cardA.currentState?.toggleExpansion();
                       },
                       child: Column(
-                        children: <Widget>[
+                        children: const <Widget>[
                           Icon(Icons.swap_vert),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 2.0),
+                            padding: EdgeInsets.symmetric(vertical: 2.0),
                           ),
                           Text('Toggle'),
                         ],
