@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'homepage.dart';
 
 void main() {
-  runApp(DevicePreview(
-    builder: (BuildContext context) => const MaterialApp(
-      useInheritedMediaQuery: true,
-      home: MyApp(),
-      debugShowCheckedModeBanner: false,
-    ),
+  runApp(const MaterialApp(
+    useInheritedMediaQuery: true,
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
   ));
 }
 

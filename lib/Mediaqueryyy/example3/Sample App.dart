@@ -5,14 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MaterialApp(
+  runApp( MaterialApp(
         home: MyApp(),
         useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-      )));
+      ));
 }
 class MyApp extends StatelessWidget {
   @override
@@ -32,7 +29,6 @@ class _MediaQueryWidget extends StatefulWidget {
 
 class _MediaQueryWidgetState extends State<_MediaQueryWidget> {
   late MediaQueryData media;
-
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
@@ -48,8 +44,7 @@ class _MediaQueryWidgetState extends State<_MediaQueryWidget> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: <Widget>[
           const Center(
             child: Padding(

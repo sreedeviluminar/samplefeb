@@ -1,20 +1,24 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
-  runApp( MaterialApp(
-        home: MyApp(),
+  runApp(DevicePreview(
+    builder: (BuildContext context) => MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.purple),
+      useInheritedMediaQuery: true,
+      home: MyApp2(),
+      debugShowCheckedModeBanner: false,
+    ),
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp2 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
@@ -49,27 +53,27 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 20,
             ),
-            screenWidth >= 1280 && screenHeight >= 720
+            screenWidth >= 840 && screenHeight >= 480
                 ? Container(
-              height: 100,
-              width: 700,
-              color: Colors.red,
-            )
+                    height: 100,
+                    width: 700,
+                    color: Colors.red,
+                  )
                 : Container(
-              height: 100,
-              width: 100,
-              color: Colors.blue,
-            ),
+                    height: 100,
+                    width: 100,
+                    color: Colors.blue,
+                  ),
             const SizedBox(
               height: 20,
             ),
             screenOrientation == Orientation.portrait
                 ? const Text(
-              'This device is in portrait mode',
-            )
+                    'This device is in portrait mode',
+                  )
                 : const Text(
-              'This device is in landscape mode',
-            ),
+                    'This device is in landscape mode',
+                  ),
           ],
         ),
       ),
