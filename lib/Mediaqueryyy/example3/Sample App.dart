@@ -80,7 +80,6 @@ class _MediaQueryWidgetState extends State<_MediaQueryWidget> {
       ),
     );
   }
-
   /// Text widget
   Widget _text(String text) => Padding(
         padding: const EdgeInsets.all(8),
