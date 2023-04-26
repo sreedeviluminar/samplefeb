@@ -17,7 +17,8 @@ class _MainSQLState extends State<MainSQL> {
   List<Map<String, dynamic>> note_from_db = []; //to store data from sqflite
 
   @override
-  void initState() {  // refreshing the ui
+  void initState() {
+    // refreshing the ui
     refreshData();
     super.initState();
   }
@@ -39,26 +40,26 @@ class _MainSQLState extends State<MainSQL> {
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
-            itemCount: note_from_db.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title:  Text("${note_from_db[index]['title']}"),
-                  subtitle:  Text(note_from_db[index]['note']),
-                  trailing: SizedBox(
-                    width: 100,
-                    child: Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.edit)),
-                        IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.delete)),
-                      ],
+              itemCount: note_from_db.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text("${note_from_db[index]['title']}"),
+                    subtitle: Text(note_from_db[index]['note']),
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          IconButton(
+                              onPressed: () {}, icon: const Icon(Icons.edit)),
+                          IconButton(
+                              onPressed: () {}, icon: const Icon(Icons.delete)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            }),
+                );
+              }),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showForm(null),
         child: const Icon(Icons.add),
@@ -101,15 +102,19 @@ class _MainSQLState extends State<MainSQL> {
                     height: 10,
                   ),
                   ElevatedButton(
-                      onPressed: () async {
-                        if (id == null) {
-                          await addNote();
-                        }
-                        if (id != null) {
-                          await updateNote();
-                        }
-                      },
-                      child: Text(id == null ? 'ADD NOTE' : "UPDATE"))
+                    onPressed: () async {
+                      if (id == null) {
+                        await addNote();
+                      }
+                      if (id != null) {
+                        await updateNote();
+                      }
+                      title.text = "";
+                      note.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(id == null ? 'ADD NOTE' : "UPDATE"),
+                  )
                 ],
               ),
             ));
