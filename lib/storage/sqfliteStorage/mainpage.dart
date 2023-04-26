@@ -43,7 +43,7 @@ class _MainSQLState extends State<MainSQL> {
             itemBuilder: (context, index) {
               return Card(
                 child: ListTile(
-                  title:  Text(note_from_db[index]['title']),
+                  title:  Text("${note_from_db[index]['title']}"),
                   subtitle:  Text(note_from_db[index]['note']),
                   trailing: SizedBox(
                     width: 100,
