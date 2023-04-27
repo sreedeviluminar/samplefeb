@@ -51,9 +51,15 @@ class _MainSQLState extends State<MainSQL> {
                       child: Row(
                         children: [
                           IconButton(
-                              onPressed: () {}, icon: const Icon(Icons.edit)),
+                              onPressed: () {
+                                showForm(note_from_db[index]['id']);
+                              },
+                              icon: const Icon(Icons.edit)),
                           IconButton(
-                              onPressed: () {}, icon: const Icon(Icons.delete)),
+                              onPressed: () {
+                                deleteNote(note_from_db[index]['id']);
+                              },
+                              icon: const Icon(Icons.delete)),
                         ],
                       ),
                     ),
@@ -71,6 +77,12 @@ class _MainSQLState extends State<MainSQL> {
   final note = TextEditingController();
 
   void showForm(int? id) async {
+    if (id != null) {
+      final existingNote = note_from_db.firstWhere((note) => note['id'] == id);
+      title.text = existingNote['title'];
+      note.text = existingNote['note'];
+    }
+
     showModalBottomSheet(
         context: context,
         elevation: 3,
@@ -107,7 +119,7 @@ class _MainSQLState extends State<MainSQL> {
                         await addNote();
                       }
                       if (id != null) {
-                        await updateNote();
+                        await updateNote(id);
                       }
                       title.text = "";
                       note.text = "";
@@ -125,5 +137,15 @@ class _MainSQLState extends State<MainSQL> {
     refreshData();
   }
 
-  updateNote() {}
+  Future<void> updateNote(int id) async {
+    await SQLHelper.updateNote(id, title.text, note.text);
+    refreshData();
+  }
+
+  void deleteNote(int id) async {
+    await SQLHelper.deletenote(id);
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Note Deleted")));
+    refreshData();
+  }
 }
