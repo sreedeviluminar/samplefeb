@@ -31,12 +31,12 @@ class _MyTODoState extends State<MyTODo> {
     super.initState();
     loadTask();
   }
-
+/// creating new data
   Future<void> createTask(Map<String, dynamic> task) async {
     await tbox.add(task);
     loadTask();
   }
-
+/// read all the data
   void loadTask() {
     final data = tbox.keys.map((id) {
       final value = tbox.get(id);
@@ -46,6 +46,22 @@ class _MyTODoState extends State<MyTODo> {
     setState(() {
       task = data.reversed.toList();
     });
+  }
+/// updating hive data
+  Future<void> updateTask(int key, Map<String, dynamic> uptask) async{
+    await tbox.put(key, uptask);
+    loadTask();
+  }
+///deleting hive data
+  Future<void> deleteTask(int key) async{
+    await tbox.delete(key);
+    loadTask();
+  }
+
+  ///reading single data
+  Map<String,dynamic> readData(int key){
+    final data = tbox.get(key);
+    return data;
   }
 
   @override
@@ -74,8 +90,14 @@ class _MyTODoState extends State<MyTODo> {
                     trailing: Wrap(
                       children: [
                         IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.edit_calendar)),
-                        IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+                            onPressed: () {
+                              showForm(context, task[index]["key"]);
+                            },
+                            icon: const Icon(Icons.edit_calendar)),
+                        IconButton(
+                            onPressed: () {
+                              deleteTask(task[index]["key"]);
+                            }, icon: const Icon(Icons.delete))
                       ],
                     ),
                   ),
@@ -92,6 +114,12 @@ class _MyTODoState extends State<MyTODo> {
   final TextEditingController details_controller = TextEditingController();
 
   void showForm(BuildContext context, int? id) async {
+    if(id != null){
+      final ex_task =
+      task.firstWhere((element) => element['key'] == id);
+      name_controller.text = ex_task['name'];
+      details_controller.text  = ex_task['details'];
+    }
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -130,7 +158,7 @@ class _MyTODoState extends State<MyTODo> {
                         });
                       }
                       if (id != null) {
-                        //updateTask(id ,{'name' :name_controller.text, 'details' :details_controller.text});
+                        updateTask(id ,{'name' :name_controller.text, 'details' :details_controller.text});
                       }
 
                       name_controller.text = "";
@@ -143,4 +171,6 @@ class _MyTODoState extends State<MyTODo> {
           );
         });
   }
+
+
 }
