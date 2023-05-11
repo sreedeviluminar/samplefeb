@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:samplefeb/storage/Login%20using%20hive/model/usermodel.dart';
+
+import '../model/usermodel.dart';
 
 class DBFunction{
   DBFunction.internal();

@@ -1,8 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:samplefeb/storage/Login%20using%20hive/database/Database.dart';
-import 'package:samplefeb/storage/Login%20using%20hive/model/usermodel.dart';
+
+import '../database/Database.dart';
+import '../model/usermodel.dart';
+
 
 class Registration extends StatelessWidget {
   TextEditingController usename = TextEditingController();

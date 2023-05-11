@@ -5,8 +5,9 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:samplefeb/storage/Login%20using%20hive/database/Database.dart';
-import 'package:samplefeb/storage/Login%20using%20hive/screens/registration.dart';
+import 'package:samplefeb/storage/Hive/Login%20using%20hive/database/Database.dart';
+import 'package:samplefeb/storage/Hive/Login%20using%20hive/screens/registration.dart';
+
 import '../model/usermodel.dart';
 import 'home.dart';
 

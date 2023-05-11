@@ -1,0 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
+class FireHelper {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  get user => auth.currentUser;
+
+  Future<String?> signUp({required String mail, required String password}) async {
+    try {
+      await auth.createUserWithEmailAndPassword(
+          email: mail,
+          password: password);
+      return null;
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+}
