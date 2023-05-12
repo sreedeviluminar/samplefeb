@@ -1,11 +1,14 @@
+import 'dart:html';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:samplefeb/storage/firebaseee/Reg%20and%20Login/fire_authentication.dart';
 import 'package:samplefeb/storage/firebaseee/Reg%20and%20Login/registartion.dart';
 import '../../Hive/Login using hive/screens/registration.dart';
-
+import 'home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +26,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(title: Text("Login Page"),),
+      appBar: AppBar(
+        title: Text("Login Page"),
+      ),
       body: Form(
         key: formkey,
         child: Column(
@@ -68,13 +73,28 @@ class LoginPage extends StatelessWidget {
                 },
               ),
             ),
-            ElevatedButton(onPressed: () {}, child: const Text("Login")),
+            ElevatedButton(
+                onPressed: () {
+                  if (formkey.currentState!.validate()) {
+                    formkey.currentState!.save();
+                    FireHelper().signIn(mail: email!, pass: pwd!).then((value){
+                      if(value == null){
+                        Get.to(Homef());
+                      }else{
+                        Get.snackbar("Error", "User not found $value");
+                      }
+                    });
+                  }
+                },
+                child: const Text("Login")),
             const SizedBox(
               height: 20,
             ),
-            TextButton(onPressed: () {
-              Get.to(RegistrationPAGE());
-            }, child: const Text("SignUp Here")),
+            TextButton(
+                onPressed: () {
+                  Get.to(RegistrationPAGE());
+                },
+                child: const Text("SignUp Here")),
           ],
         ),
       ),
