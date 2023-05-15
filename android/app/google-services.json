@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "75553312479",
-    "project_id": "myappfeb",
-    "storage_bucket": "myappfeb.appspot.com"
+    "project_number": "881303382307",
+    "project_id": "my-map-feb",
+    "storage_bucket": "my-map-feb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:75553312479:android:4b8813c640368b4e58636a",
+        "mobilesdk_app_id": "1:881303382307:android:6ac0e5af66873b5c3a4496",
         "android_client_info": {
           "package_name": "com.appdev.samplefeb"
         }
       },
       "oauth_client": [
         {
-          "client_id": "75553312479-u9sj8je6qnp5gg0iq4sv5b51eut2u0k6.apps.googleusercontent.com",
+          "client_id": "881303382307-vkfj8gmpi0t6sn7phofjckjobdblto48.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD76tRpWuVp3HQuPOjVzD9W2dHTAvLYP2s"
+          "current_key": "AIzaSyC21ONnr-W9aCGa9Jqnq1NB4ktBtDtSd38"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "75553312479-u9sj8je6qnp5gg0iq4sv5b51eut2u0k6.apps.googleusercontent.com",
+              "client_id": "881303382307-vkfj8gmpi0t6sn7phofjckjobdblto48.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
