@@ -53,6 +53,7 @@ dependencies:
   image_picker:
   path:
   provider:
+  intl_phone_field:
 
 
   # The following adds the Cupertino Icons font to your application.

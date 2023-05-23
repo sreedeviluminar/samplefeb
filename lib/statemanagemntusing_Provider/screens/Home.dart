@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:samplefeb/statemanagemntusing_Provider/provider/MovieProvider.dart';
+import 'package:samplefeb/statemanagemntusing_Provider/screens/Wishlist.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -24,7 +25,9 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> WishList()));
+                },
                 icon: const Icon(Icons.favorite),
                 label:  Text("Go To WishList ${movielist.length}")),
             const SizedBox(
