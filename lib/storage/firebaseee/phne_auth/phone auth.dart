@@ -3,9 +3,13 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../statemanagemntusing_Provider/screens/Home.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+
+  );
   runApp(const MyApp());
 }
 
@@ -31,9 +35,14 @@ class _MyAppState extends State<MyApp> {
     auth.verifyPhoneNumber(
       phoneNumber: userNumber,
       verificationCompleted: (PhoneAuthCredential credential) async {
-        await auth.signInWithCredential(credential).then(
-              (value) => print('Logged In Successfully'),
-        );
+        await auth.signInWithCredential(credential).then((value) async {
+          if (value.user != null) {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => Home()),
+                    (route) => false);
+          }
+        });
       },
       verificationFailed: (FirebaseAuthException e) {
         print(e.message);
@@ -54,7 +63,14 @@ class _MyAppState extends State<MyApp> {
     );
     await auth
         .signInWithCredential(credential)
-        .then((value) => print('User Login In Successful'));
+        .then((value) async {
+      if (value.user != null) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Home()),
+                (route) => false);
+      }
+    });
   }
 
   @override
