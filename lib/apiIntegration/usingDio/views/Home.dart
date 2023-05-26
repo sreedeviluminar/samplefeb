@@ -19,11 +19,11 @@ class HomePost extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.bgcolor,
       appBar: buildAppBar(),
-
       floatingActionButton: Obx(() =>
        controller.isInternetConnected.value
           ? buildFAB()
           : Container()),
+
       body: Obx(
             () =>
             SizedBox(
