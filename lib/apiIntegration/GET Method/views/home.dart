@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,8 @@ import 'package:samplefeb/apiIntegration/GET%20Method/controller/ProductControll
 import '../widgets/ProductCustomWidget.dart';
 
 void main() {
-  runApp(MaterialApp(home: HttpHome()));
+  runApp(DevicePreview(builder:(BuildContext context)=> MaterialApp(home: HttpHome(),
+  useInheritedMediaQuery: true,)));
 }
 
 class HttpHome extends StatelessWidget {
