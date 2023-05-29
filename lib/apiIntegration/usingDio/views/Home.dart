@@ -4,12 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:lottie/lottie.dart';
-import 'package:path/path.dart';
 import 'package:samplefeb/apiIntegration/usingDio/controller/controller.dart';
 import 'package:samplefeb/apiIntegration/usingDio/utils/colors.dart';
 import 'package:samplefeb/apiIntegration/usingDio/utils/constSnack.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-
 import 'Details.dart';
 
 void main() {
@@ -68,7 +66,7 @@ class HomePost extends StatelessWidget {
         height: 150,
         width: 150,
         child: Lottie.network(
-            "https://assets8.lottiefiles.com/packages/lf20_t9gkkhz4.json"),
+            "https://assets6.lottiefiles.com/packages/lf20_mzrkxt2h.json"),
       ),
     );
   }
@@ -79,10 +77,10 @@ class HomePost extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: 200,
-            width: 200,
-            child: Lottie.network(
-                "https://assets4.lottiefiles.com/packages/lf20_tasn1wnv.json"),
+            height: 250,
+            width: 250,
+            child: Lottie.asset(
+                "assets/animation/45721-no-internet.json"),
           ),
           MaterialButton(
             onPressed: () => onTapButton(context),
@@ -117,7 +115,7 @@ class HomePost extends StatelessWidget {
         },
         child: ScrollablePositionedList.builder(
             itemScrollController: controller.itemController,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             itemCount: controller.posts.length,
             itemBuilder: (context, index) {
               return InkWell(
@@ -137,11 +135,11 @@ class HomePost extends StatelessWidget {
                     ),
                     title: Text(
                       controller.posts[index].title,
-                      style: TextStyle(color: Colors.lightGreenAccent),
+                      style: const TextStyle(color: Colors.lightGreenAccent),
                     ),
                     subtitle: Text(
                       controller.posts[index].body,
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
