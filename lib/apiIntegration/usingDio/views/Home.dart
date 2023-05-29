@@ -133,7 +133,7 @@ class HomePost extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.greenAccent,
                           borderRadius: BorderRadius.circular(8)),
-                      child: Text(controller.posts[index].id.toString()),
+                      child: Center(child: Text(controller.posts[index].id.toString())),
                     ),
                     title: Text(
                       controller.posts[index].title,

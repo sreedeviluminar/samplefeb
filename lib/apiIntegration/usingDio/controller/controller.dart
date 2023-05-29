@@ -34,7 +34,9 @@ class HomeController extends GetxController {
     itemController.scrollTo(
         index: posts.length - 5,
         duration: const Duration(seconds: 2),
-        curve: Curves.bounceOut);
+        curve: Curves.bounceOut,
+    );
+    isListScrollToDown.value = true;
   }
 
   scrollListUpWard() {
@@ -42,6 +44,7 @@ class HomeController extends GetxController {
       index: 0,
       duration: const Duration(seconds: 2),
       curve: Curves.easeInCirc);
+    isListScrollToDown.value = false;
   }
   @override
   void onInit() {
